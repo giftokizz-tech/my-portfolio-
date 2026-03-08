@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gift Chukwu - Full Stack Web Developer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        .profile-pic {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 0.8rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 3rem 2rem;
+        }
+
+        .about {
+            background: white;
+        }
+
+        h2 {
+            color: #667eea;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .experience {
+            background: #f8f9fa;
+        }
+
+        .experience-item {
+            background: white;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid #667eea;
+            border-radius: 5px;
+        }
+
+        .experience-item h3 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .skills {
+            background: white;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-card h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .projects {
+            background: #f8f9fa;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-card-content {
+            padding: 1.5rem;
+        }
+
+        .project-card h3 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: opacity 0.3s;
+        }
+
+        .contact-link:hover {
+            opacity: 0.8;
+        }
+
+        footer {
+            background: #222;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-wrap: wrap;
+                padding: 1rem;
+                gap: 1rem;
+            }
+
+            nav .logo {
+                font-size: 1.2rem;
+                flex: 1;
+            }
+
+            nav ul {
+                gap: 0.8rem;
+                flex-wrap: wrap;
+                justify-content: flex-start;
+                order: 3;
+                width: 100%;
+            }
+
+            nav ul li {
+                font-size: 0.9rem;
+            }
+
+            .profile-pic {
+                width: 50px;
+                height: 50px;
+                order: 2;
+            }
+
+            .hero {
+                padding: 2rem 1rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .cta-button {
+                padding: 0.6rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            section {
+                padding: 2rem 1rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .about-text p {
+                font-size: 0.95rem;
+            }
+
+            .experience-item {
+                padding: 1rem;
+                margin-bottom: 0.8rem;
+            }
+
+            .experience-item h3 {
+                font-size: 1rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .skill-card {
+                padding: 1.5rem;
+            }
+
+            .skill-card h3 {
+                font-size: 1rem;
+            }
+
+            .skill-card p {
+                font-size: 0.9rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .project-card-content {
+                padding: 1rem;
+            }
+
+            .project-card h3 {
+                font-size: 1rem;
+            }
+
+            .project-card p {
+                font-size: 0.9rem;
+            }
+
+            .contact {
+                padding: 2rem 1rem;
+            }
+
+            .contact h2 {
+                font-size: 1.5rem;
+            }
+
+            .contact p {
+                font-size: 0.95rem;
+            }
+
+            .contact-links {
+                gap: 1rem;
+                margin-top: 1.5rem;
+            }
+
+            .contact-link {
+                font-size: 0.9rem;
+            }
+
+            footer {
+                padding: 1.5rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav {
+                padding: 0.8rem;
+            }
+
+            nav .logo {
+                font-size: 1rem;
+            }
+
+            nav ul {
+                gap: 0.5rem;
+            }
+
+            nav ul li a {
+                font-size: 0.8rem;
+            }
+
+            .profile-pic {
+                width: 40px;
+                height: 40px;
+            }
+
+            .hero {
+                padding: 1.5rem 1rem;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+                margin-bottom: 0.3rem;
+            }
+
+            .hero p {
+                font-size: 0.9rem;
+                margin-bottom: 1rem;
+            }
+
+            .cta-button {
+                padding: 0.5rem 1.2rem;
+                font-size: 0.8rem;
+            }
+
+            section {
+                padding: 1.5rem 0.8rem;
+            }
+
+            h2 {
+                font-size: 1.3rem;
+            }
+
+            .about-content {
+                gap: 1rem;
+            }
+
+            .about-text p {
+                font-size: 0.9rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skill-card {
+                padding: 1.2rem;
+            }
+
+            .project-card-content {
+                padding: 0.8rem;
+            }
+
+            .contact-links {
+                gap: 0.8rem;
+            }
+
+            .contact-link {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav>
+            <div class="logo">GC</div>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <img src="gifto.jpg" alt="Profile Picture" class="profile-pic">
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Gift Chukwu</h1>
+        <p>Full Stack Web Developer</p>
+        <p style="font-size: 1rem; margin-bottom: 1rem;">Building amazing web experiences with modern technologies</p>
+        <a href="https://wa.me/07043084431" class="cta-button">Get In Touch</a>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Hi! I'm Gift Chukwu, a passionate full stack web developer with a month of intensive training and hands-on experience. I've been rapidly upskilling in modern web technologies and best practices.</p>
+                    <p>I'm excited about building scalable, user-friendly web applications. Whether it's frontend development with responsive designs or backend solutions with robust databases, I'm ready to tackle the challenge.</p>
+                    <p>I believe in continuous learning and staying updated with the latest trends in web development. Let's create something amazing together!</p>
+                </div>
+                <div>
+                    <ul style="list-style: none; line-height: 2;">
+                        <li>📍 Location: Rivers State, Nigeria</li>
+                        <li>💼 Experience: 1 Month</li>
+                        <li>🎯 Status: Open to Opportunities</li>
+                        <li>⚡ Passion: Web Development</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="experience">
+        <div class="container">
+            <h2>Training & Experience</h2>
+            <div class="experience-item">
+                <h3>Full Stack Web Development Training</h3>
+                <p style="color: #667eea; font-weight: 500;">Recent | 1 Month</p>
+                <p>Completed intensive training in modern web development stack including HTML5, CSS3, JavaScript, and backend technologies. Worked on multiple projects to strengthen practical skills.</p>
+            </div>
+            <div class="experience-item">
+                <h3>Continuous Learning</h3>
+                <p style="color: #667eea; font-weight: 500;">Ongoing</p>
+                <p>Actively learning and implementing best practices in web development, version control, and modern frameworks to stay current with industry standards.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills" id="skills">
+        <div class="container">
+            <h2>Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>Frontend</h3>
+                    <p>HTML5, CSS3, JavaScript</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Responsive Design</h3>
+                    <p>Mobile-first, CSS Flexbox, Grid</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Backend Basics</h3>
+                    <p>Understanding of server logic and databases</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Web Development</h3>
+                    <p>Building complete web applications</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Best Practices</h3>
+                    <p>Clean code, Git, Version Control</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Problem Solving</h3>
+                    <p>Debugging and optimization</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <div class="container">
+            <h2>Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-card-content">
+                        <h3>Portfolio Website</h3>
+                        <p><strong>Technologies:</strong> HTML5, CSS3</p>
+                        <p>Personal portfolio showcase to display skills and projects. Responsive design that works on all devices.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-card-content">
+                        <h3>Your Project 2</h3>
+                        <p><strong>Technologies:</strong> TBD</p>
+                        <p>Add your project description here. Update with your completed projects and their details.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-card-content">
+                        <h3>Your Project 3</h3>
+                        <p><strong>Technologies:</strong> TBD</p>
+                        <p>Add your project description here. Update with your completed projects and their details.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Let's Connect</h2>
+            <p>I'm always open to discussing new projects and opportunities.</p>
+            <div class="contact-links">
+                <a href="mailto: giftokizz@gmail.com" class="contact-link">📧 Email Me</a>
+                <a href="https://github.com/giftokizz-tech" class="contact-link" target="_blank">💻 GitHub</a>
+                <a href="https://linkedin.com/in/yourusername" class="contact-link" target="_blank">🔗 LinkedIn</a>
+                <a href="https://twitter.com/yourusername" class="contact-link" target="_blank">𝕏 Twitter</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Gift Chukwu. All rights reserved.</p>
+    </footer>
+</body>
+</html>
